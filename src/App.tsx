@@ -3,6 +3,7 @@ import { TaskList } from "./components/TaskList";
 import { RootState } from "./store/store";
 import {
   addTask,
+  removeTask,
   setToggleCompletion,
   setToggleImportance,
   Task,
@@ -19,6 +20,9 @@ const App = () => {
   const handleToggleCompletion = (id: string) => {
     dispatch(setToggleCompletion(id));
   };
+  const handleRemoveTask = (id: string) => {
+    dispatch(removeTask(id));
+  };
 
   const handleAddTask = (task: Task) => {
     dispatch(addTask(task));
@@ -31,6 +35,7 @@ const App = () => {
         onToggleImportance={handleToggleImportance}
         onToggleCompletion={handleToggleCompletion}
         addTask={handleAddTask}
+        removeTask={handleRemoveTask}
       />
     </div>
   );

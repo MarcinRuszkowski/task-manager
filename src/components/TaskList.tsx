@@ -9,6 +9,7 @@ interface TaskListProps {
   onToggleImportance: (id: string) => void;
   onToggleCompletion: (id: string) => void;
   addTask: (task: Task) => void;
+  removeTask: (id: string) => void;
 }
 
 export const TaskList: React.FC<TaskListProps> = ({
@@ -16,6 +17,7 @@ export const TaskList: React.FC<TaskListProps> = ({
   onToggleImportance,
   onToggleCompletion,
   addTask,
+  removeTask,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -36,6 +38,7 @@ export const TaskList: React.FC<TaskListProps> = ({
             date={task.date}
             onToggleImportance={onToggleImportance}
             onToggleCompletion={onToggleCompletion}
+            removeTask={removeTask}
           />
         ))}
         <div
