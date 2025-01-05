@@ -3,6 +3,7 @@ import { TaskList } from "./components/TaskList";
 import { RootState } from "./store/store";
 import {
   addTask,
+  editTask,
   removeTask,
   setToggleCompletion,
   setToggleImportance,
@@ -20,14 +21,18 @@ const App = () => {
   const handleToggleCompletion = (id: string) => {
     dispatch(setToggleCompletion(id));
   };
-  const handleRemoveTask = (id: string) => {
-    dispatch(removeTask(id));
-  };
 
   const handleAddTask = (task: Task) => {
     dispatch(addTask(task));
   };
 
+  const handleRemoveTask = (id: string) => {
+    dispatch(removeTask(id));
+  };
+
+  const handleEditTask = (updatedTask: Task) => {
+    dispatch(editTask(updatedTask));
+  };
   return (
     <div className="flex justify-center m-5 ">
       <TaskList
@@ -36,6 +41,7 @@ const App = () => {
         onToggleCompletion={handleToggleCompletion}
         addTask={handleAddTask}
         removeTask={handleRemoveTask}
+        editTask={handleEditTask}
       />
     </div>
   );

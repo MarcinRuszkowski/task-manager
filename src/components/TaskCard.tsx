@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaExclamation } from "react-icons/fa6";
 import { MdEdit, MdDelete } from "react-icons/md";
 import { GoCheckCircle, GoCheckCircleFill } from "react-icons/go";
-import { removeTask } from "../store/tasksSlice";
+import { Task } from "../store/tasksSlice";
+import { EditTask } from "./EditTask";
 
 interface TaskCardProps {
   id: string;
@@ -14,6 +15,7 @@ interface TaskCardProps {
   onToggleImportance: (id: string) => void;
   onToggleCompletion: (id: string) => void;
   removeTask: (id: string) => void;
+  editTask: (task: Task) => void;
 }
 
 export const TaskCard: React.FC<TaskCardProps> = ({
@@ -26,7 +28,18 @@ export const TaskCard: React.FC<TaskCardProps> = ({
   onToggleImportance,
   onToggleCompletion,
   removeTask,
+  editTask,
 }) => {
+  const [isEditOpen, setIsEditOpen] = useState(false);
+
+  const handleEdit = () => {
+    setIsEditOpen(true);
+  };
+
+  const closeEditModal = () => {
+    setIsEditOpen(false);
+  };
+
   return (
     <div className="flex flex-col justify-between bg-secondary p-5 rounded-3xl max-w-[450px] min-h-[250px] relative">
       <FaExclamation
@@ -48,6 +61,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({
             className=" rounded-3xl text-2xl text-red-500 hover:text-red-600 cursor-pointer"
           />
           <MdEdit
+            onClick={handleEdit}
             title="edytuj"
             className=" rounded-3xl text-2xl text-blue-500 hover:text-blue-600 cursor-pointer"
           />
@@ -66,6 +80,14 @@ export const TaskCard: React.FC<TaskCardProps> = ({
           )}
         </div>
       </div>
+      {isEditOpen && (
+        <EditTask
+          isOpen={isEditOpen}
+          onClose={closeEditModal}
+          task={{ id, title, desc, date, isCompleted, isImportant }}
+          editTask={editTask}
+        />
+      )}
     </div>
   );
 };
