@@ -47,6 +47,37 @@ const initialState: TasksState = {
       date: "2022-12-10",
       isImportant: true,
     },
+    {
+      id: uuidv4(),
+      title: "Załatwić sprawę w urzędzie",
+      desc: "Zabrać dowód osobisty i akt notarialny",
+      isCompleted: true,
+      date: "2024-12-12",
+      isImportant: true,
+    },
+    {
+      id: uuidv4(),
+      title: "Dentysta",
+      desc: "Przygotować prześwietlenie zębów",
+      isCompleted: false,
+      date: "2024-01-12",
+      isImportant: false,
+    },
+    {
+      id: uuidv4(),
+      title: "Posprzątać auto",
+      isCompleted: true,
+      date: "2024-12-13",
+      isImportant: false,
+    },
+    {
+      id: uuidv4(),
+      title: "Weterynarz",
+      desc: "Książeczka zdrowia, ostatnie wyniki, nie zapomnieć psa",
+      isCompleted: false,
+      date: "2022-12-10",
+      isImportant: true,
+    },
   ],
 };
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Task } from "../store/tasksSlice";
 
 interface EditTaskProps {
@@ -15,7 +15,7 @@ export const EditTask: React.FC<EditTaskProps> = ({
   editTask,
 }) => {
   const [title, setTitle] = useState<string>(task.title);
-  const [desc, setDesc] = useState<string>(task.desc);
+  const [desc, setDesc] = useState<string>(task.desc || "");
   const [date, setDate] = useState<string>(task.date);
   const [error, setError] = useState<string | null>(null);
 
